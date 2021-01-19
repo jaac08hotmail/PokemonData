@@ -1,4 +1,4 @@
-package com.jarroyo.pokemondata.Views;
+package com.jarroyo.pokemondata.Views.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                 break;
             case R.id.salir:
-                sweetAlertDialog = mensaje.MensajeConfirmacionAdvertenciaConUnBoton(this,"Mensaje",
+                sweetAlertDialog = mensaje.MensajeConfirmacionAdvertenciaConBotones(this,"Mensaje",
                         "Desea cerrar el aplicativo?");
                 sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                     @Override
@@ -70,6 +70,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         finish();
                     }
                 });
+                sweetAlertDialog.show();
                 break;
         }
         return false;
