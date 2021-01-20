@@ -1,4 +1,4 @@
-package com.jarroyo.pokemondata.Interactor;
+package com.jarroyo.pokemondata.Interactor.Model;
 
 import java.io.Serializable;
 

@@ -1,7 +1,7 @@
 package com.jarroyo.pokemondata.Presenters;
 
 import com.jarroyo.pokemondata.Interactor.ListPokeInteractor;
-import com.jarroyo.pokemondata.Interactor.PokemonModel;
+import com.jarroyo.pokemondata.Interactor.Model.PokemonModel;
 import com.jarroyo.pokemondata.Interfaces.iListPokeInteractor;
 import com.jarroyo.pokemondata.Interfaces.iListPokePresenter;
 import com.jarroyo.pokemondata.Interfaces.iListPokeView;

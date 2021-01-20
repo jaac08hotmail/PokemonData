@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginTop="?attr/actionBarSize"
+    android:background="@drawable/list_gradient"
     android:orientation="vertical"
     tools:context=".Views.Fragments.DetallePokeFragment">
 
@@ -14,13 +15,14 @@
         android:gravity="center"
         android:paddingBottom="10dp"
         android:text="Detalles del Poklemon"
+        android:textColor="@android:color/black"
         android:textSize="24sp"
         android:textStyle="bold">
 
     </TextView>
 
     <ImageView
-        android:id="@+id/imagen_detalleid"
+        android:id="@+id/imgPokemon"
         android:layout_width="match_parent"
         android:layout_height="206dp"
         android:layout_gravity="center"
@@ -28,27 +30,75 @@
 
     </ImageView>
 
-    <TextView
-        android:id="@+id/txtVNombre"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:text="Nombre:"
-        android:textSize="24sp"
-        android:textStyle="bold">
+        android:orientation="horizontal">
 
-    </TextView>
+        <TextView
+            android:id="@+id/txtVNom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:layout_weight="0"
+            android:text="Nombre:"
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:textStyle="bold">
 
-    <TextView
-        android:id="@+id/txtVTamano"
+        </TextView>
+
+        <TextView
+            android:id="@+id/txtVNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingLeft="10dp"
+            android:text="Nombre"
+            android:textColor="@android:color/black"
+            android:textSize="24sp">
+
+        </TextView>
+
+        <Button
+            android:id="@+id/btnBuscar"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="0"
+            android:background="@drawable/search" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:text="Tamaño :"
-        android:textSize="24sp"
-        android:textStyle="bold">
+        android:orientation="horizontal">
 
-    </TextView>
+        <TextView
+            android:id="@+id/txtVTam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:paddingLeft="10dp"
+            android:text="Tamaño :"
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:textStyle="bold">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/txtVTamano"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:text="Tamaño "
+            android:textColor="@android:color/black"
+            android:textSize="24sp">
+
+        </TextView>
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/nombre_detalle"
@@ -56,40 +106,63 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="HABILIDADES"
+        android:textColor="@android:color/black"
         android:textSize="20sp"
         android:textStyle="bold">
 
     </TextView>
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/spnHabilidades"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <TextView
-        android:id="@+id/txtVExperiencia"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:text="Experiencia :"
-        android:textSize="24sp"
-        android:textStyle="bold">
+        android:orientation="horizontal">
 
-    </TextView>
+        <TextView
+            android:id="@+id/txtVExp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:text="Experiencia :"
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:textStyle="bold">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/txtVExperiencia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:text="Experiencia"
+            android:textColor="@android:color/black"
+            android:textSize="24sp">
+
+        </TextView>
+    </LinearLayout>
 
     <TextView
         android:id="@+id/txtVEstadisticas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:paddingLeft="10dp"
-        android:text="Estadisticas :"
+        android:text="Estadisticas"
+        android:textColor="@android:color/black"
         android:textSize="24sp"
         android:textStyle="bold">
 
     </TextView>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/reecyclerEstadisticas"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:background="@drawable/border_list" />
 
 </LinearLayout>

@@ -14,7 +14,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
-import com.jarroyo.pokemondata.Interactor.PokemonModel;
+import com.jarroyo.pokemondata.Interactor.Model.PokemonModel;
 import com.jarroyo.pokemondata.Interfaces.iComunicaFragments;
 import com.jarroyo.pokemondata.R;
 import com.jarroyo.pokemondata.Utils.General;

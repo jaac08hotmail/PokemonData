@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.jarroyo.pokemondata.Interactor.PokemonModel;
+import com.jarroyo.pokemondata.Interactor.Model.PokemonModel;
 import com.jarroyo.pokemondata.Interfaces.iComunicaFragments;
 import com.jarroyo.pokemondata.Interfaces.iListPokePresenter;
 import com.jarroyo.pokemondata.Interfaces.iListPokeView;

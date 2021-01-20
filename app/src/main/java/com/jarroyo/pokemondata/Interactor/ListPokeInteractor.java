@@ -10,6 +10,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
+import com.jarroyo.pokemondata.Interactor.Model.PokemonModel;
 import com.jarroyo.pokemondata.Interfaces.iListPokeInteractor;
 import com.jarroyo.pokemondata.Interfaces.iListPokePresenter;
 import com.jarroyo.pokemondata.Utils.General;
@@ -88,9 +89,11 @@ public class ListPokeInteractor implements iListPokeInteractor {
                 return;
             }
             catch(WindowManager.BadTokenException e){
+                pokePresenter.errorConsulta( e.getMessage());
                 e.printStackTrace();
             }
             catch(Exception e){
+                pokePresenter.errorConsulta( e.getMessage());
                 e.printStackTrace();
             }
         }

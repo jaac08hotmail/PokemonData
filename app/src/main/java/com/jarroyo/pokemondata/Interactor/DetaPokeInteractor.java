@@ -1,5 +1,7 @@
 package com.jarroyo.pokemondata.Interactor;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.WindowManager;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -10,17 +12,26 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
+import com.jarroyo.pokemondata.Interactor.Model.DetallePokemonModel;
+import com.jarroyo.pokemondata.Interfaces.iDetaPokeInteractor;
+import com.jarroyo.pokemondata.Interfaces.iDetaPokePresenter;
 import com.jarroyo.pokemondata.Utils.General;
 
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.net.URL;
 
-public class DetaPokeInteractor {
+public class DetaPokeInteractor implements iDetaPokeInteractor {
 
-    public void consultaDetalle(String urlApi){
+    iDetaPokePresenter detaPokePresenter;
 
+    public DetaPokeInteractor(iDetaPokePresenter detaPokePresenter) {
+        this.detaPokePresenter = detaPokePresenter;
+    }
+
+
+    @Override
+    public void consultarDetalle(String urlApi) {
         StringRequest postRequest = new StringRequest(Request.Method.GET, urlApi,
                 new Response.Listener<String>() {
                     @Override
@@ -30,31 +41,28 @@ public class DetaPokeInteractor {
                             JSONObject result = new JSONObject(response);
                             DetallePokemonModel detallePokemonModel = new Gson().fromJson(result.toString(), DetallePokemonModel.class);
                             if (detallePokemonModel != null) {
-                                ArrayList<DetallePokemonModel> arrayPokemonModel = new ArrayList<DetallePokemonModel>(Arrays.asList(detallePokemonModel));
-                                ////pokePresenter.resultadoDatos(arrayPokemonModel);
+                                detaPokePresenter.resultadoDetalle(detallePokemonModel);
                             }
-                            //else
-                                //pokePresenter.errorConsulta("No se Encontraron Datos!!!");
+                            else
+                                detaPokePresenter.errorConsulta("No se Encontro Detalle!!!");
 
                         } catch (Exception e) {
-                            //pokePresenter.errorConsulta(e.getMessage());
+                            detaPokePresenter.errorConsulta(e.getMessage());
                             e.printStackTrace();
                         }
                     }
                 },errorListener
         );
         try {
-            //tiempo de espera de conexcion initialTimeout 4000 maxNumRetries = 0
             postRequest.setRetryPolicy(new DefaultRetryPolicy(8000,
                     0, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
             Volley.newRequestQueue(General.context).add(postRequest);
         }
         catch(Exception e ){
-            //pokePresenter.errorConsulta(e.getMessage());
+            detaPokePresenter.errorConsulta(e.getMessage());
             e.printStackTrace();
         }
     }
-
     private final Response.ErrorListener errorListener = new Response.ErrorListener() {
         @Override
         public void onErrorResponse(VolleyError error) {
@@ -63,24 +71,29 @@ public class DetaPokeInteractor {
 
                 if (networkResponse != null && networkResponse.statusCode == 400) {
                     error.printStackTrace();
-                    //pokePresenter.errorConsulta(error.toString());
+                    detaPokePresenter.errorConsulta(error.toString());
                     return;
                 }
                 String msj = error.getMessage();
                 error.printStackTrace();
                 if (msj == null) {
-                    //pokePresenter.errorConsulta("Servidor No Responde");
+                    detaPokePresenter.errorConsulta("Servidor No Responde");
                 } else {
-                    //pokePresenter.errorConsulta( msj.toString());
+                    detaPokePresenter.errorConsulta( msj.toString());
                 }
                 return;
             }
             catch(WindowManager.BadTokenException e){
+                detaPokePresenter.errorConsulta( e.getMessage());
                 e.printStackTrace();
             }
             catch(Exception e){
+                detaPokePresenter.errorConsulta( e.getMessage());
                 e.printStackTrace();
             }
         }
     };
+
+
+
 }
