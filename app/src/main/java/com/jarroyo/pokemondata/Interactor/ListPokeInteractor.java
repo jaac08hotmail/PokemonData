@@ -1,8 +1,6 @@
 package com.jarroyo.pokemondata.Interactor;
 
 import android.app.Activity;
-import android.content.Context;
-import android.view.View;
 import android.view.WindowManager;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -13,7 +11,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
-import com.jarroyo.pokemondata.Interfaces.iComunicaFragments;
 import com.jarroyo.pokemondata.Interfaces.iListPokeInteractor;
 import com.jarroyo.pokemondata.Interfaces.iListPokePresenter;
 import com.jarroyo.pokemondata.Utils.General;
@@ -23,13 +20,10 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import androidx.fragment.app.Fragment;
 
-
-public class ListPokeInteractor extends Fragment implements iListPokeInteractor {
+public class ListPokeInteractor implements iListPokeInteractor {
 
     private iListPokePresenter pokePresenter;
-    Activity actividad;
 
     public ListPokeInteractor(iListPokePresenter pokePresenter) {
         this.pokePresenter = pokePresenter;
@@ -103,14 +97,4 @@ public class ListPokeInteractor extends Fragment implements iListPokeInteractor 
         }
     };
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-
-        if(context instanceof Activity){
-            this.actividad = (Activity) context;
-        }
-
-
-    }
 }

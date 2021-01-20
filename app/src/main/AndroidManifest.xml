@@ -15,12 +15,12 @@
             <intent-filter>
                 <action
                     android:name="android.intent.action.MAIN"
-                    android:theme="@style/AppTheme" />
+                    android:theme="@style/AppThemeNoActionBar" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Views.Activities.MainActivity" android:theme="@style/AppTheme" >
+        <activity android:name=".Views.Activities.MainActivity" android:theme="@style/AppThemeNoActionBar" >
         </activity>
     </application>
 

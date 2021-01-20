@@ -69,6 +69,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         switch(menuItem.getItemId()){
             case R.id.listPokemon:
+                fragmentManager = getSupportFragmentManager();
+                fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.add(R.id.container_fragment,new ListPokeFragment());
+                fragmentTransaction.commit();
 
                 break;
             case R.id.listBerries:
@@ -94,10 +98,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         switch(tipoMensaje){
             case 1:
+                sweetAlertDialog.dismiss();
                 mensaje.MensajeAdvertencia(this,"Advertencia",dato);
                 break;
             case 2:
-                sweetAlertDialog = mensaje.progreso(this,"Consultado Datos");
+                sweetAlertDialog = mensaje.progreso(this,dato);
                 sweetAlertDialog.show();
                 break;
             case 3:

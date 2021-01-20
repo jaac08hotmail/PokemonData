@@ -1,24 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title=" ">
-        <menu>
-            <item
-                android:id="@+id/listPokemon"
-                android:icon="@drawable/pokeball"
-                android:title="Listado Pokemon" />
-            <item
-                android:id="@+id/listBerries"
-                android:icon="@drawable/berries"
-                android:title="Lista de Bayas" />
-        </menu>
-    </item>
-    <item android:title=" ">
-        <menu>
-            <item
-                android:id="@+id/salir"
-                android:icon="@drawable/exit"
-                android:title="Salir" />
-        </menu>
-    </item>
+    <item
+        android:id="@+id/listPokemon"
+        android:icon="@drawable/pokeball"
+        android:title="Listado Pokemon" />
+    <item
+        android:id="@+id/listBerries"
+        android:icon="@drawable/berries"
+        android:title="Lista de Bayas" />
+    <item
+        android:id="@+id/salir"
+        android:icon="@drawable/exit"
+        android:title="Salir" />
 </menu>

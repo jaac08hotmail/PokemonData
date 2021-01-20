@@ -61,7 +61,7 @@ public class ListPokeFragment extends Fragment implements iListPokeView {
 
     public void consultarDatos(){
 
-        interfaceComunicaFragments.infoMensaje("Validando Folios",2);
+        interfaceComunicaFragments.infoMensaje("Consultando Datos",2);
         listPokePresenter.consultarDatos(General.g_urlApi+"/pokemon");
     }
 
@@ -77,8 +77,7 @@ public class ListPokeFragment extends Fragment implements iListPokeView {
             public void onClick(View view) {
                 String nombre = arrayPokemon.get(recyclerPokemon.getChildAdapterPosition(view)).getName();
                 Toast.makeText(getContext(), "Seleccionó: "+ nombre, Toast.LENGTH_SHORT).show();
-
-                //interfaceComunicaFragments.enviarPersona(listaPersonas.get(recyclerViewPersonas.getChildAdapterPosition(view)));
+                interfaceComunicaFragments.enviarPersona(listaPersonas.get(recyclerViewPersonas.getChildAdapterPosition(view)));
 
             }
         });
@@ -87,8 +86,7 @@ public class ListPokeFragment extends Fragment implements iListPokeView {
 
     @Override
     public void errorConsulta(String error) {
-        interfaceComunicaFragments.infoMensaje("",3);
-        interfaceComunicaFragments.infoMensaje("Invovenientes al Consultar Datos: " + error,2);
+        interfaceComunicaFragments.infoMensaje("Invovenientes al Consultar Datos: " + error,1);
     }
 
     @Override
