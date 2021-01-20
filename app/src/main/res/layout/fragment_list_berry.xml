@@ -4,11 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginTop="?attr/actionBarSize"
-    android:background="@drawable/list_gradient_pokemon"
-    tools:context=".Views.Fragments.ListPokeFragment">
+    tools:context=".Views.Fragments.ListBerryFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/RecyclerPokemon"
+        android:id="@+id/RecyclerBerry"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:background="@drawable/list_gradient_berry" />
+
 </FrameLayout>

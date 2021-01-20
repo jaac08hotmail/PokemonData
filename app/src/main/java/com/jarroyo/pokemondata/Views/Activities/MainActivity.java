@@ -20,6 +20,7 @@ import com.jarroyo.pokemondata.R;
 import com.jarroyo.pokemondata.Utils.General;
 import com.jarroyo.pokemondata.Utils.Mensaje;
 import com.jarroyo.pokemondata.Views.Fragments.DetallePokeFragment;
+import com.jarroyo.pokemondata.Views.Fragments.ListBerryFragment;
 import com.jarroyo.pokemondata.Views.Fragments.ListPokeFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
@@ -79,7 +80,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                 break;
             case R.id.listBerries:
-
+                fragmentManager = getSupportFragmentManager();
+                fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.remove(new ListPokeFragment());
+                fragmentTransaction.add(R.id.container_fragment,new ListBerryFragment());
+                fragmentTransaction.commit();
                 break;
             case R.id.salir:
                 sweetAlertDialog = mensaje.MensajeConfirmacionAdvertenciaConBotones(this,"Mensaje",

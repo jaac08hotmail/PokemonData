@@ -95,7 +95,7 @@ public class DetallePokeFragment extends Fragment implements iDetaPokeView {
 
 
     public void buscarInternet(){
-        String url = "https://www.google.com/search?q={" + txtVNombre.getText() + "}";
+        String url = "https://www.google.com/search?q=" + txtVNombre.getText() + "";
         Uri uri = Uri.parse(url);
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
