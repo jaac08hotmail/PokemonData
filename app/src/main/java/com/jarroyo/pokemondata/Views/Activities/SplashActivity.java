@@ -13,7 +13,7 @@ import com.jarroyo.pokemondata.R;
 
 public class SplashActivity extends AppCompatActivity {
 
-    private final int duracion_splash = 2500;
+    private final int duracion_splash = 3500;
     private MediaPlayer sound;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
