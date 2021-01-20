@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.jarroyo.pokemondata.Interactor.Pokemon;
+import com.jarroyo.pokemondata.Interactor.PokemonModel;
 import com.jarroyo.pokemondata.R;
 import java.util.ArrayList;
 
@@ -16,11 +16,11 @@ import androidx.recyclerview.widget.RecyclerView;
 public class AdapterListPoke extends RecyclerView.Adapter<AdapterListPoke.ViewHolder> implements View.OnClickListener {
 
     LayoutInflater inflater;
-    ArrayList<Pokemon> model;
+    ArrayList<PokemonModel> model;
 
     private View.OnClickListener listener;
 
-    public AdapterListPoke(Context context, ArrayList<Pokemon> model){
+    public AdapterListPoke(Context context, ArrayList<PokemonModel> model){
         this.inflater = LayoutInflater.from(context);
         this.model = model;
     }

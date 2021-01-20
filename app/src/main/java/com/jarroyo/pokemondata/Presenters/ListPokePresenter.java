@@ -1,7 +1,7 @@
 package com.jarroyo.pokemondata.Presenters;
 
 import com.jarroyo.pokemondata.Interactor.ListPokeInteractor;
-import com.jarroyo.pokemondata.Interactor.Pokemon;
+import com.jarroyo.pokemondata.Interactor.PokemonModel;
 import com.jarroyo.pokemondata.Interfaces.iListPokeInteractor;
 import com.jarroyo.pokemondata.Interfaces.iListPokePresenter;
 import com.jarroyo.pokemondata.Interfaces.iListPokeView;
@@ -26,9 +26,9 @@ public class ListPokePresenter implements iListPokePresenter {
     }
 
     @Override
-    public void resultadoDatos(ArrayList<Pokemon> arrayPokemon) {
+    public void resultadoDatos(ArrayList<PokemonModel> arrayPokemonModel) {
         if(pokeView!=null)
-            pokeView.resultadoDatos(arrayPokemon);
+            pokeView.resultadoDatos(arrayPokemonModel);
 
     }
 

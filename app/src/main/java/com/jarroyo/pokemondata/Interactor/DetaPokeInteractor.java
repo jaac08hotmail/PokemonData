@@ -10,8 +10,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
-import com.jarroyo.pokemondata.Interfaces.iListPokeInteractor;
-import com.jarroyo.pokemondata.Interfaces.iListPokePresenter;
 import com.jarroyo.pokemondata.Utils.General;
 
 import org.json.JSONObject;
@@ -19,19 +17,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+public class DetaPokeInteractor {
 
-public class ListPokeInteractor implements iListPokeInteractor {
-
-    private iListPokePresenter pokePresenter;
-
-    public ListPokeInteractor(iListPokePresenter pokePresenter) {
-        this.pokePresenter = pokePresenter;
-    }
-
-
-    @Override
-    public void consultarDatos(String urlApi) {
-
+    public void consultaDetalle(String urlApi){
 
         StringRequest postRequest = new StringRequest(Request.Method.GET, urlApi,
                 new Response.Listener<String>() {
@@ -40,16 +28,16 @@ public class ListPokeInteractor implements iListPokeInteractor {
                         try {
 
                             JSONObject result = new JSONObject(response);
-                            PokemonModel[] pokemonModels = new Gson().fromJson(result.get("results").toString(), PokemonModel[].class);
-                            if (pokemonModels != null) {
-                                ArrayList<PokemonModel> arrayPokemonModel = new ArrayList<PokemonModel>(Arrays.asList(pokemonModels));
-                                pokePresenter.resultadoDatos(arrayPokemonModel);
+                            DetallePokemonModel detallePokemonModel = new Gson().fromJson(result.toString(), DetallePokemonModel.class);
+                            if (detallePokemonModel != null) {
+                                ArrayList<DetallePokemonModel> arrayPokemonModel = new ArrayList<DetallePokemonModel>(Arrays.asList(detallePokemonModel));
+                                ////pokePresenter.resultadoDatos(arrayPokemonModel);
                             }
-                            else
-                                pokePresenter.errorConsulta("No se Encontraron Datos!!!");
+                            //else
+                                //pokePresenter.errorConsulta("No se Encontraron Datos!!!");
 
                         } catch (Exception e) {
-                            pokePresenter.errorConsulta(e.getMessage());
+                            //pokePresenter.errorConsulta(e.getMessage());
                             e.printStackTrace();
                         }
                     }
@@ -62,7 +50,7 @@ public class ListPokeInteractor implements iListPokeInteractor {
             Volley.newRequestQueue(General.context).add(postRequest);
         }
         catch(Exception e ){
-            pokePresenter.errorConsulta(e.getMessage());
+            //pokePresenter.errorConsulta(e.getMessage());
             e.printStackTrace();
         }
     }
@@ -75,15 +63,15 @@ public class ListPokeInteractor implements iListPokeInteractor {
 
                 if (networkResponse != null && networkResponse.statusCode == 400) {
                     error.printStackTrace();
-                    pokePresenter.errorConsulta(error.toString());
+                    //pokePresenter.errorConsulta(error.toString());
                     return;
                 }
                 String msj = error.getMessage();
                 error.printStackTrace();
                 if (msj == null) {
-                    pokePresenter.errorConsulta("Servidor No Responde");
+                    //pokePresenter.errorConsulta("Servidor No Responde");
                 } else {
-                    pokePresenter.errorConsulta( msj.toString());
+                    //pokePresenter.errorConsulta( msj.toString());
                 }
                 return;
             }
@@ -95,5 +83,4 @@ public class ListPokeInteractor implements iListPokeInteractor {
             }
         }
     };
-
 }

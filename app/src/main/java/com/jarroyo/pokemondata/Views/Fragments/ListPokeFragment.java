@@ -3,41 +3,33 @@ package com.jarroyo.pokemondata.Views.Fragments;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import cn.pedant.SweetAlert.SweetAlertDialog;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
-import android.widget.Toast;
 
-import com.jarroyo.pokemondata.Interactor.Pokemon;
+import com.jarroyo.pokemondata.Interactor.PokemonModel;
 import com.jarroyo.pokemondata.Interfaces.iComunicaFragments;
 import com.jarroyo.pokemondata.Interfaces.iListPokePresenter;
 import com.jarroyo.pokemondata.Interfaces.iListPokeView;
 import com.jarroyo.pokemondata.Presenters.ListPokePresenter;
 import com.jarroyo.pokemondata.R;
 import com.jarroyo.pokemondata.Utils.General;
-import com.jarroyo.pokemondata.Utils.Mensaje;
 import com.jarroyo.pokemondata.Views.Adapter.AdapterListPoke;
 
 import java.util.ArrayList;
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 
 public class ListPokeFragment extends Fragment implements iListPokeView {
 
     AdapterListPoke adapterPokemon;
     RecyclerView recyclerPokemon;
-    SweetAlertDialog sweetAlertDialog;
-    Mensaje mensaje;
     private iListPokePresenter listPokePresenter;
     Activity actividad;
     iComunicaFragments interfaceComunicaFragments;
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -66,19 +58,17 @@ public class ListPokeFragment extends Fragment implements iListPokeView {
     }
 
     @Override
-    public void resultadoDatos(final ArrayList<Pokemon> arrayPokemon) {
+    public void resultadoDatos(final ArrayList<PokemonModel> arrayPokemonModel) {
         interfaceComunicaFragments.infoMensaje("",3);
         recyclerPokemon.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapterPokemon = new AdapterListPoke(getContext(), arrayPokemon);
+        adapterPokemon = new AdapterListPoke(getContext(), arrayPokemonModel);
         recyclerPokemon.setAdapter(adapterPokemon);
 
         adapterPokemon.setOnclickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String nombre = arrayPokemon.get(recyclerPokemon.getChildAdapterPosition(view)).getName();
-                Toast.makeText(getContext(), "Seleccionó: "+ nombre, Toast.LENGTH_SHORT).show();
-                interfaceComunicaFragments.enviarPersona(listaPersonas.get(recyclerViewPersonas.getChildAdapterPosition(view)));
-
+                String nombre = arrayPokemonModel.get(recyclerPokemon.getChildAdapterPosition(view)).getName();
+                interfaceComunicaFragments.detallePokemon(arrayPokemonModel.get(recyclerPokemon.getChildAdapterPosition(view)));
             }
         });
 

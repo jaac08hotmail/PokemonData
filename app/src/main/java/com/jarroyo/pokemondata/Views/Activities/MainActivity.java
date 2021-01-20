@@ -14,10 +14,12 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
+import com.jarroyo.pokemondata.Interactor.PokemonModel;
 import com.jarroyo.pokemondata.Interfaces.iComunicaFragments;
 import com.jarroyo.pokemondata.R;
 import com.jarroyo.pokemondata.Utils.General;
 import com.jarroyo.pokemondata.Utils.Mensaje;
+import com.jarroyo.pokemondata.Views.Fragments.DetallePokeFragment;
 import com.jarroyo.pokemondata.Views.Fragments.ListPokeFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
@@ -31,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     SweetAlertDialog sweetAlertDialog;
     Mensaje mensaje;
 
+    DetallePokeFragment detallePokeFragment;
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
 
@@ -110,5 +113,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
         }
 
+    }
+
+    @Override
+    public void detallePokemon(PokemonModel pokemonModel) {
+        detallePokeFragment = new DetallePokeFragment();
+
+        Bundle bundleEnvio = new Bundle();
+        bundleEnvio.putSerializable("pokemonModel", pokemonModel);
+        detallePokeFragment.setArguments(bundleEnvio);
+
+        //CArgar fragment en el activity
+        fragmentManager = getSupportFragmentManager();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.container_fragment, detallePokeFragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 }

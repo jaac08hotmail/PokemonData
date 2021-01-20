@@ -1,11 +1,13 @@
 package com.jarroyo.pokemondata.Interactor;
 
-public class Pokemon {
+import java.io.Serializable;
+
+public class PokemonModel implements Serializable {
 
     private String name;
     private String url;
 
-    public Pokemon() {
+    public PokemonModel() {
     }
 
     public String getName() {
