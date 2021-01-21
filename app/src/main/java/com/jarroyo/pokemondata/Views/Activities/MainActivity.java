@@ -10,6 +10,10 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
+import android.content.Context;
+import android.content.pm.ActivityInfo;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -57,11 +61,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         actionBarDrawerToggle.setDrawerIndicatorEnabled(true);
         actionBarDrawerToggle.syncState();
 
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
 
-        fragmentManager = getSupportFragmentManager();
-        fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.container_fragment,new ListPokeFragment());
-        fragmentTransaction.commit();
+        if (networkInfo != null && networkInfo.isConnected()) {
+            fragmentManager = getSupportFragmentManager();
+            fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.add(R.id.container_fragment,new ListPokeFragment());
+            fragmentTransaction.commit();
+        } else {
+            mensaje.MensajeAdvertencia(this,"Advertencia",
+                    "Verifique el acceso a Internet!!!");
+        }
+
+
 
     }
 
@@ -70,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //para cerrar automaticamente el menu
         drawerLayout.closeDrawer(GravityCompat.START);
 
-
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         switch(menuItem.getItemId()){
             case R.id.listPokemon:
                 fragmentManager = getSupportFragmentManager();
@@ -128,7 +142,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         bundleEnvio.putSerializable("pokemonModel", pokemonModel);
         detallePokeFragment.setArguments(bundleEnvio);
 
-        //CArgar fragment en el activity
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.container_fragment, detallePokeFragment);
