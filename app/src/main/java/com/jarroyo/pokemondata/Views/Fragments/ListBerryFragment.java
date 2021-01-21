@@ -70,7 +70,7 @@ public class ListBerryFragment extends Fragment implements iListBerryView {
         adapterBerry.setOnclickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                
+
                 arrayBerryModel.get(recyclerBerry.getChildAdapterPosition(view));
 
                 if(arrayBerryModel.get(recyclerBerry.getChildAdapterPosition(view)).getFavorite()==0)
