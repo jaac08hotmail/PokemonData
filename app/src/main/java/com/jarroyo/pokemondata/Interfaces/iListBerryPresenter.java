@@ -7,5 +7,6 @@ import java.util.ArrayList;
 public interface iListBerryPresenter {
     void consultarDatos(String urlApi);
     void resultadoDatos(ArrayList<BerryModel> arrayBerryModel);
+    void actualizaFavorito(ArrayList<BerryModel> arrayBerryModel,Integer pos);
     void errorConsulta(String error);
 }

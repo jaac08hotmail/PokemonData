@@ -9,7 +9,7 @@
         android:id="@+id/txtVNombre"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:paddingStart="10dp"
         android:text="Nombre"
         android:textColor="@android:color/black"

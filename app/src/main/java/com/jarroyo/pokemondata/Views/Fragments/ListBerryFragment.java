@@ -70,18 +70,21 @@ public class ListBerryFragment extends Fragment implements iListBerryView {
         adapterBerry.setOnclickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String nombre = arrayBerryModel.get(recyclerBerry.getChildAdapterPosition(view)).getName();
-                if (arrayBerryModel.get(recyclerBerry.getChildAdapterPosition(view)).getFavorite()==true)
-                    arrayBerryModel.get(recyclerBerry.getChildAdapterPosition(view)).setFavorite(false);
+                
+                arrayBerryModel.get(recyclerBerry.getChildAdapterPosition(view));
+
+                if(arrayBerryModel.get(recyclerBerry.getChildAdapterPosition(view)).getFavorite()==0)
+                    arrayBerryModel.get(recyclerBerry.getChildAdapterPosition(view)).setFavorite(1);
                 else
-                    arrayBerryModel.get(recyclerBerry.getChildAdapterPosition(view)).setFavorite(true);
+                    arrayBerryModel.get(recyclerBerry.getChildAdapterPosition(view)).setFavorite(0);
 
-
+                listBerryPresenter.actualizaFavorito(arrayBerryModel,recyclerBerry.getChildAdapterPosition(view));
 
             }
         });
 
     }
+
 
     @Override
     public void errorConsulta(String error) {

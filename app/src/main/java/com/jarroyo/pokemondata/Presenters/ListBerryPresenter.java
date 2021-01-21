@@ -33,6 +33,11 @@ public class ListBerryPresenter implements iListBerryPresenter {
     }
 
     @Override
+    public void actualizaFavorito(ArrayList<BerryModel> arrayBerryModel,Integer pos) {
+        berryInteractor.actualizaFavorito(arrayBerryModel,pos);
+    }
+
+    @Override
     public void errorConsulta(String error) {
         if(berryView!=null)
             berryView.errorConsulta(error);

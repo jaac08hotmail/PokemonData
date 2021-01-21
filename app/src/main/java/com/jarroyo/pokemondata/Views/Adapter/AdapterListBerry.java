@@ -57,11 +57,11 @@ public class AdapterListBerry extends RecyclerView.Adapter<AdapterListBerry.View
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         String nomBerry = model.get(position).getName();
-        Boolean imgFavorite = model.get(position).getFavorite();
+        Integer imgFavorite = model.get(position).getFavorite();
 
         holder.txtVNomBerry.setText(nomBerry);
 
-        if (imgFavorite==true)
+        if (imgFavorite==1)
             holder.imgFavorite.setImageResource(R.drawable.favorite_on);
             //holder.imgFavorite.setVisibility(View.VISIBLE);
         else
