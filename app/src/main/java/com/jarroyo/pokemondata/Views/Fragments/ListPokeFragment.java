@@ -27,7 +27,8 @@ public class ListPokeFragment extends Fragment implements iListPokeView {
 
     AdapterListPoke adapterPokemon;
     RecyclerView recyclerPokemon;
-    private iListPokePresenter listPokePresenter;
+    LinearLayoutManager linearLayoutManager;
+    iListPokePresenter listPokePresenter;
     Activity actividad;
     iComunicaFragments interfaceComunicaFragments;
 
@@ -43,9 +44,10 @@ public class ListPokeFragment extends Fragment implements iListPokeView {
         View view = inflater.inflate(R.layout.fragment_list_poke,container,false);
         recyclerPokemon = view.findViewById(R.id.RecyclerPokemon);
         listPokePresenter = new ListPokePresenter(this);
+        linearLayoutManager = new LinearLayoutManager(getContext());
 
         consultarDatos();
-        // Inflate the layout for this fragment
+
         return view;
     }
 
@@ -58,14 +60,13 @@ public class ListPokeFragment extends Fragment implements iListPokeView {
     @Override
     public void resultadoDatos(final ArrayList<PokemonModel> arrayPokemonModel) {
         interfaceComunicaFragments.infoMensaje("",3);
-        recyclerPokemon.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerPokemon.setLayoutManager(linearLayoutManager);
         adapterPokemon = new AdapterListPoke(getContext(), arrayPokemonModel);
         recyclerPokemon.setAdapter(adapterPokemon);
 
         adapterPokemon.setOnclickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String nombre = arrayPokemonModel.get(recyclerPokemon.getChildAdapterPosition(view)).getName();
                 interfaceComunicaFragments.detallePokemon(arrayPokemonModel.get(recyclerPokemon.getChildAdapterPosition(view)));
             }
         });
