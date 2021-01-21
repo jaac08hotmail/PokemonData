@@ -46,7 +46,6 @@ public class ListBerryInteractor implements iListBerryInteractor {
             {
                 berryModels[ite].setId(cursor.getInt(0));
                 berryModels[ite].setFavorite(cursor.getInt(1));
-                cursor.moveToNext();
             } else {
                 berryModels[ite].setId(0);
                 berryModels[ite].setFavorite(0);
