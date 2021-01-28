@@ -142,8 +142,11 @@ public class DetallePokeFragment extends Fragment implements iDetaPokeView {
             this.actividad= (Activity) context;
             interfaceComunicaFragments= (iComunicaFragments) this.actividad;
         }
+    }
 
-
+    @Override
+    public void onDetach() {
+        super.onDetach();
     }
 
 }

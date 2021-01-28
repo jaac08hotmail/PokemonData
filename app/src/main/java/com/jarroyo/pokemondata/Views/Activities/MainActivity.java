@@ -149,4 +149,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
+
+    @Override
+    public void onBackPressed() {
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        getSupportFragmentManager().beginTransaction().replace(R.id.container_fragment,new ListPokeFragment()).commit();
+    }
 }

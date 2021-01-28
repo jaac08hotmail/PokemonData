@@ -86,8 +86,11 @@ public class ListPokeFragment extends Fragment implements iListPokeView {
             this.actividad= (Activity) context;
             interfaceComunicaFragments= (iComunicaFragments) this.actividad;
         }
+    }
 
-
+    @Override
+    public void onDetach() {
+        super.onDetach();
     }
 
 }

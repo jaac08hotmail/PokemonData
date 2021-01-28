@@ -99,7 +99,10 @@ public class ListBerryFragment extends Fragment implements iListBerryView {
             this.actividad= (Activity) context;
             interfaceComunicaFragments= (iComunicaFragments) this.actividad;
         }
+    }
 
-
+    @Override
+    public void onDetach() {
+        super.onDetach();
     }
 }
